@@ -7,11 +7,20 @@
  */
 
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Button, FlatList } from 'react-native';
 
 import { connect } from 'react-redux';
 
 class CounterApp2 extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            //isLoading: true,
+            counter: 0,
+            heroesList: [],
+        }
+    }
 
     render() {
         return (
@@ -26,6 +35,18 @@ class CounterApp2 extends Component {
                         <Text style={{ fontSize: 20 }}>Decrease</Text>
                     </TouchableOpacity>
                 </View>
+
+                <View>
+                    <Text>{this.props.colors.color1}</Text>
+                    <Text>{this.props.colors.color2}</Text>
+                </View>
+
+                <FlatList
+                    data={this.props.heroesList}
+                    renderItem={({ item }) => <Text>{item.name}</Text>}
+                    keyExtractor={(index) => index.toString()}
+                />
+
                 <Button
                     title="Go to Details"
                     onPress={() => this.props.navigation.navigate('Home')}
@@ -37,7 +58,9 @@ class CounterApp2 extends Component {
 
 function mapStateToProps(state) {
     return {
-        counter: state.counterReducer.counter
+        counter: state.counterReducer.counter,
+        heroesList: state.storeHeroesListReducer.heroesList,
+        colors: state.colorsReducer.colors,
     }
 }
 

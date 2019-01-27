@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Button, FlatList, ActivityIndicator, } from 'react-native';
 
 import { connect } from 'react-redux';
-import { increaseCounter, decreaseCounter } from './actions';
+import { increaseCounter, decreaseCounter, fetchHeroesList } from './actions';
 
 class CounterApp extends Component {
 
@@ -21,6 +21,7 @@ class CounterApp extends Component {
             heroesList: [],
         }
     }
+
 
     getHerosFromApiAsync = async () => {
 
@@ -82,6 +83,11 @@ class CounterApp extends Component {
                     </TouchableOpacity>
                 </View>
 
+                <View>
+                    <Text>{this.props.colors.color1}</Text>
+                    <Text>{this.props.colors.color2}</Text>
+                </View>
+
                 <FlatList
                     data={this.state.heroesList}
                     renderItem={({ item }) => <Text>{item.name}</Text>}
@@ -99,15 +105,24 @@ class CounterApp extends Component {
 
 function mapStateToProps(state) {
     return {
-        counter: state.counterReducer.counter
+        counter: state.counterReducer.counter,
+        colors: state.colorsReducer.colors,
     }
 }
+
+// function mapDispatchToProps(dispatch) {
+//     return {
+//         increaseCounter: () => dispatch(increaseCounter()),
+//         decreaseCounter: () => dispatch(decreaseCounter()),
+//         storeHeroesList: (hList) => dispatch("STORE_HEROES", hList),
+//     }
+// }
 
 function mapDispatchToProps(dispatch) {
     return {
         increaseCounter: () => dispatch(increaseCounter()),
         decreaseCounter: () => dispatch(decreaseCounter()),
-        storeHeroesList: (hList) => dispatch("STORE_HEROES", hList),
+        storeHeroesList: (heroesList) => dispatch(fetchHeroesList(heroesList)),
     }
 }
 

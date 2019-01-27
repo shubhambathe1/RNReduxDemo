@@ -1,13 +1,16 @@
+import { FETCH_HEROES_LIST } from '../actions/actionTypes';
+
 const initialState = {
     heroesList: []
 }
 
 export default function storeHeroesListReducer(state = initialState, action) {
     switch (action.type) {
-        case 'STORE_HEROES':
-            return [
-                ...state, hList
-            ]
+        case FETCH_HEROES_LIST:
+            return {
+                ...state,
+                heroesList: action.heroesList
+            }
         //case 'DECREASE_COUNTER':
         //    return { counter: state.counter - 1 }
     }
