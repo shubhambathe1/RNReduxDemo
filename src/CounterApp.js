@@ -22,7 +22,6 @@ class CounterApp extends Component {
         }
     }
 
-
     getHerosFromApiAsync = async () => {
 
         await fetch('https://simplifiedcoding.net/demos/view-flipper/heroes.php', {
@@ -48,13 +47,6 @@ class CounterApp extends Component {
         this.getHerosFromApiAsync();
 
     }
-
-    // storeHeroesList = (hList) => {
-
-    //     //console.warn(hList)
-    //     this.props.dispatch({ type: 'STORE_HEROES', hList })
-
-    // }
 
     render() {
 
@@ -103,22 +95,14 @@ class CounterApp extends Component {
     }
 }
 
-function mapStateToProps(state) {
+mapStateToProps = (state) => {
     return {
         counter: state.counterReducer.counter,
         colors: state.colorsReducer.colors,
     }
 }
 
-// function mapDispatchToProps(dispatch) {
-//     return {
-//         increaseCounter: () => dispatch(increaseCounter()),
-//         decreaseCounter: () => dispatch(decreaseCounter()),
-//         storeHeroesList: (hList) => dispatch("STORE_HEROES", hList),
-//     }
-// }
-
-function mapDispatchToProps(dispatch) {
+mapDispatchToProps = (dispatch) => {
     return {
         increaseCounter: () => dispatch(increaseCounter()),
         decreaseCounter: () => dispatch(decreaseCounter()),

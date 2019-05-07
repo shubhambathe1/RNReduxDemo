@@ -4,7 +4,7 @@ const initialState = {
     heroesList: []
 }
 
-export default function storeHeroesListReducer(state = initialState, action) {
+export default storeHeroesListReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_HEROES_LIST:
             return {

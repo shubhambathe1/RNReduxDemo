@@ -5,7 +5,7 @@ const initialState = {
     }
 }
 
-export default function colorsReducer(state = initialState, action) {
+export default colorsReducer = (state = initialState, action) => {
     // switch (action.type) {
     //     case 'INCREASE_COUNTER':
     //         return { counter: state.counter + 1 }

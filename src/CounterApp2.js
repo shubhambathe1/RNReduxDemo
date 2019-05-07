@@ -57,7 +57,7 @@ class CounterApp2 extends Component {
     }
 }
 
-function mapStateToProps(state) {
+mapStateToProps = (state) => {
     return {
         counter: state.counterReducer.counter,
         heroesList: state.storeHeroesListReducer.heroesList,
@@ -65,7 +65,7 @@ function mapStateToProps(state) {
     }
 }
 
-function mapDispatchToProps(dispatch) {
+mapDispatchToProps = (dispatch) => {
     return {
         increaseCounter: () => dispatch(increaseCounter()),
         decreaseCounter: () => dispatch(decreaseCounter()),
