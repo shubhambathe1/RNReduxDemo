@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Button, FlatList } from 'react-native';
 
 import { connect } from 'react-redux';
+import { increaseCounter, decreaseCounter } from './actions';
 
 class CounterApp2 extends Component {
 
@@ -66,8 +67,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        increaseCounter: () => dispatch({ type: 'INCREASE_COUNTER' }),
-        decreaseCounter: () => dispatch({ type: 'DECREASE_COUNTER' }),
+        increaseCounter: () => dispatch(increaseCounter()),
+        decreaseCounter: () => dispatch(decreaseCounter()),
     }
 }
 

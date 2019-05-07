@@ -1,6 +1,6 @@
 const initialState = {
     colors: {
-        color1: "red",
+        color1: "gray",
         color2: "yellow",
     }
 }
